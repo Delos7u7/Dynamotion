@@ -18,7 +18,7 @@ public class CtrlLogin {
     private int op;
     private login objLog;
     public Login vistaLogin;
-    
+    private String prueba ="Esto es una prueba";
      public CtrlLogin() {
     }
 
