@@ -5,6 +5,7 @@
 package Controlador;
 
 import Modelo.Usuario;
+import Modelo.login;
 import Vista.Login;
 import Vista.Registrar;
 import java.awt.event.ActionEvent;
@@ -22,13 +23,15 @@ import javax.swing.JOptionPane;
 public class CtrlUsuario implements ActionListener {
     private Usuario mod;
     private Registrar frm;
+    private login modC;
 
     public CtrlUsuario() {
     }
 
-    public CtrlUsuario(Usuario mod, Registrar frm) {
+    public CtrlUsuario(Usuario mod, login modC, Registrar frm) {
         this.mod = mod;
         this.frm = frm;
+        this.modC=modC;
         this.frm.txtNombreUsuario.addActionListener(this);
         this.frm.txtNombre.addActionListener(this);
         this.frm.txtApPaternoUsuario.addActionListener(this);
@@ -58,7 +61,7 @@ public class CtrlUsuario implements ActionListener {
             } catch (ParseException ex) {
                 Logger.getLogger(CtrlUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            mod.setContraseña(frm.txtContraseña.getText());
+            modC.setContraseña(frm.txtContraseña.getText());
             mod.setUsername(frm.txtNombreUsuario.getText());
 
             if (mod.registrar()) {

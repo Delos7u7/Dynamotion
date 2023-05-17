@@ -24,7 +24,6 @@ public class Usuario {
     private String apellidoMaterno;
     private String telefono;
     private Date fechaNacimientoUsuario;
-    private String contraseña;
     private String username;
 
     public ConexionBD objCon = new ConexionBD();
@@ -34,14 +33,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, Date fechaNacimientoUsuario, String contraseña, String username) {
+    public Usuario(int idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, Date fechaNacimientoUsuario, String username) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.telefono = telefono;
         this.fechaNacimientoUsuario = fechaNacimientoUsuario;
-        this.contraseña = contraseña;
         this.username = username;
     }
 
@@ -93,14 +91,6 @@ public class Usuario {
         this.fechaNacimientoUsuario = fechaNacimientoUsuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -117,7 +107,7 @@ public class Usuario {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaNacimiento = dateFormat.format(this.fechaNacimientoUsuario);
                 System.out.println("3");
-                objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarUsuario(?,?,?,?,?,?,?);");
+                objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarUsuario(?,?,?,?,?,?);");
                 System.out.println("4");
                 objInstruccionSQL.setString(1, this.nombre);
                 System.out.println("5");
@@ -129,9 +119,7 @@ public class Usuario {
                 System.out.println("8");
                 objInstruccionSQL.setString(5, fechaNacimiento);
                 System.out.println("9");
-                objInstruccionSQL.setString(6, contraseña);
-                System.out.println("10");
-                objInstruccionSQL.setString(7, username);
+                objInstruccionSQL.setString(6, username);
                 System.out.println("11");
                 System.out.println(objInstruccionSQL.toString()); // imprime la sentencia SQL completa
                 int filasAfectadas = objInstruccionSQL.executeUpdate();

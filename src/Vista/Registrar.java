@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.CtrlUsuario;
 import Modelo.Usuario;
+import Modelo.login;
 import Modelo.rolusuario;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -344,6 +345,9 @@ public class Registrar extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegiMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegiMouseEntered(evt);
+            }
         });
         btnRegi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -432,7 +436,7 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnRegiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegiMouseClicked
-        AdminoInvJframe AdJF = new AdminoInvJframe();
+       /* AdminoInvJframe AdJF = new AdminoInvJframe();
         AdminoInvi ad = new AdminoInvi();
         ad.setSize(470,300);
         ad.setLocation(0, 0);
@@ -444,17 +448,17 @@ public class Registrar extends javax.swing.JFrame {
         AdJF.setVisible(true);
 
         int x =0;
-        if (x==1) {
-            
-        
-        
+            */   
         Usuario mod = new Usuario();
-        Login log = new Login();
-
-        CtrlUsuario ctrl = new CtrlUsuario(mod, this);
+        login log = new login();
+        CtrlUsuario ctrl = new CtrlUsuario(mod, log , this);
         ctrl.iniciar();
-        }
+        
     }//GEN-LAST:event_btnRegiMouseClicked
+
+    private void btnRegiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegiMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegiMouseEntered
 
     /**
      * @param args the command line arguments

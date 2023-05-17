@@ -16,6 +16,7 @@ import java.util.Date;
 public class login {
      private int idlogin;
     private Date fechaCreacionLogin;
+    private String contraseña;
     //laves foraneas
     private rolusuario objRolUsuario;
     private Usuario objUsuario;
@@ -30,7 +31,7 @@ public class login {
     public login(String username, String contraseña){
         this.objUsuario=new Usuario();
         
-        this.objUsuario.setContraseña(contraseña);
+        this.contraseña=contraseña;
                 
         this.objUsuario.setUsername(username);
         
@@ -44,6 +45,18 @@ public class login {
         this.objInstruccionSQL = objInstruccionSQL;
         this.objDatosConsulta = objDatosConsulta;
     }
+
+    public login(int idlogin, Date fechaCreacionLogin, String contraseña, rolusuario objRolUsuario, Usuario objUsuario, CallableStatement objInstruccionSQL, ResultSet objDatosConsulta) {
+        this.idlogin = idlogin;
+        this.fechaCreacionLogin = fechaCreacionLogin;
+        this.contraseña = contraseña;
+        this.objRolUsuario = objRolUsuario;
+        this.objUsuario = objUsuario;
+        this.objInstruccionSQL = objInstruccionSQL;
+        this.objDatosConsulta = objDatosConsulta;
+    }
+    
+    
 
     public int getIdlogin() {
         return idlogin;
@@ -100,6 +113,16 @@ public class login {
     public void setObjCon(ConexionBD objCon) {
         this.objCon = objCon;
     }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
+    
     
        
     public boolean validarLogin()
@@ -111,7 +134,7 @@ public class login {
                 
                 objInstruccionSQL=objCon.getObjCon().prepareCall("call sp_validarInformacion(?,?)");
                 objInstruccionSQL.setString(1, this.objUsuario.getUsername());
-                objInstruccionSQL.setString(2, this.objUsuario.getContraseña());
+                objInstruccionSQL.setString(2, contraseña);
                 objDatosConsulta=objInstruccionSQL.executeQuery();
                 
                 if (objDatosConsulta.next()!=false) {
