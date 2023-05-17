@@ -289,7 +289,6 @@ public class Login extends javax.swing.JFrame {
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
         CtrlLogin con = new CtrlLogin(1, userTxt.getText(), userPass.getText(),this);
-        String.valueOf(userPass.getPassword());
         con.menuOpciones();
         
         

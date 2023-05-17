@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.CtrlLogin;
 import Controlador.CtrlUsuario;
 import Modelo.Usuario;
 import Modelo.login;
@@ -27,6 +28,16 @@ public class Registrar extends javax.swing.JFrame {
     public Registrar() {
         initComponents();
         Registrar.this.setLocationRelativeTo(null);
+    }
+    
+    public void registrarr(){
+        Usuario mod = new Usuario();
+        login log = new login();
+        CtrlUsuario ctrl = new CtrlUsuario(mod, log , this);
+        CtrlLogin ctrlLog = new CtrlLogin(2);
+        ctrlLog.menuOpciones();
+        ctrl.iniciar();
+        this.dispose();
     }
 
     /**
@@ -436,7 +447,7 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnRegiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegiMouseClicked
-       /* AdminoInvJframe AdJF = new AdminoInvJframe();
+        AdminoInvJframe AdJF = new AdminoInvJframe();
         AdminoInvi ad = new AdminoInvi();
         ad.setSize(470,300);
         ad.setLocation(0, 0);
@@ -446,13 +457,17 @@ public class Registrar extends javax.swing.JFrame {
         AdJF.jPanel111.repaint();    
         AdJF.setLocationRelativeTo(null);
         AdJF.setVisible(true);
-
-        int x =0;
-            */   
+        if (ad.getX()==1) {
+            
+        
         Usuario mod = new Usuario();
         login log = new login();
         CtrlUsuario ctrl = new CtrlUsuario(mod, log , this);
+        CtrlLogin ctrlLog = new CtrlLogin(2);
+        ctrlLog.menuOpciones();
         ctrl.iniciar();
+        this.dispose();
+        }
         
     }//GEN-LAST:event_btnRegiMouseClicked
 

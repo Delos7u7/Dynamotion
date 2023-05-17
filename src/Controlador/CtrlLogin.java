@@ -25,8 +25,15 @@ public class CtrlLogin {
     public CtrlLogin(int op, String nombreUsuario, String claveLogin, Login vistaLogin) {
         this.op = op;
         this.objLog = new login(nombreUsuario, claveLogin);
+        System.out.println(nombreUsuario+" "+claveLogin);
         this.vistaLogin=vistaLogin;
     }
+
+    public CtrlLogin(int op) {
+        this.op = op;
+    }
+    
+    
 
     public int getOp() {
         return op;
@@ -62,6 +69,15 @@ public class CtrlLogin {
                 }
                 
                 break;
+                
+            case 2://Lllenar el login
+                
+                  if (objLog.registrarLoginInv()) {
+                    JOptionPane.showMessageDialog(null, "Login Registrado con éxito");
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Login no registrado");
+                }
             default:
                 throw new AssertionError();
         }
