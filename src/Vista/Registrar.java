@@ -451,7 +451,7 @@ public class Registrar extends javax.swing.JFrame {
             */   
         Usuario mod = new Usuario();
         login log = new login();
-        CtrlUsuario ctrl = new CtrlUsuario(mod, log , this);
+        CtrlUsuario ctrl = new CtrlUsuario(mod,this,log);
         ctrl.iniciar();
         
     }//GEN-LAST:event_btnRegiMouseClicked

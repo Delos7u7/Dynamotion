@@ -118,7 +118,6 @@ public class Usuario {
                 objInstruccionSQL.setString(4, this.telefono);
                 System.out.println("8");
                 objInstruccionSQL.setString(5, fechaNacimiento);
-                System.out.println("9");
                 objInstruccionSQL.setString(6, username);
                 System.out.println("11");
                 System.out.println(objInstruccionSQL.toString()); // imprime la sentencia SQL completa

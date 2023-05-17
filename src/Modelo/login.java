@@ -7,6 +7,7 @@ package Modelo;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -27,6 +28,7 @@ public class login {
 
     public login() {
     }
+    
     
     public login(String username, String contraseña){
         this.objUsuario=new Usuario();
@@ -151,5 +153,38 @@ public class login {
         
         return false;
     } 
+    
+        public boolean registrarLog() {
+        System.out.println("1");
+        try {
+            System.out.println("2");
+            if (objCon.abrirConexion()) {
+                objInstruccionSQL = objCon.getObjCon().prepareCall("INSERT INTO TablaPrincipal (idUsuario, llave_foranea) VALUES (valor1, valor2, valor_llave_foranea);");
+                System.out.println("4");
+                objInstruccionSQL.setString(1, this.contraseña);
+                System.out.println("5");
+                objInstruccionSQL.setString(2, this.contraseña);
+                System.out.println("11");
+                System.out.println(objInstruccionSQL.toString()); // imprime la sentencia SQL completa
+                int filasAfectadas = objInstruccionSQL.executeUpdate();
+                System.out.println("12");
+                if (filasAfectadas > 0) {
+                    System.out.println("13");
+                    return true;
+                } else {
+                    System.out.println("14");
+                    return false;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("1hhf");
+            System.out.println(ex.getMessage()); // imprime el mensaje de error completo
+            objCon.mensajes = "ERROR DE SINTAXIS de SQL " + ex.getMessage();
+            System.out.println(objCon.mensajes);
+        }
+        return false;
+    }
+    
+    
     
 }

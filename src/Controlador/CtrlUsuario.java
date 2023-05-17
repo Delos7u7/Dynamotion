@@ -22,16 +22,17 @@ import javax.swing.JOptionPane;
  */
 public class CtrlUsuario implements ActionListener {
     private Usuario mod;
+    private login log;
     private Registrar frm;
     private login modC;
 
     public CtrlUsuario() {
     }
 
-    public CtrlUsuario(Usuario mod, login modC, Registrar frm) {
+    public CtrlUsuario(Usuario mod, Registrar frm, login log) {
         this.mod = mod;
         this.frm = frm;
-        this.modC=modC;
+        this.log = log;
         this.frm.txtNombreUsuario.addActionListener(this);
         this.frm.txtNombre.addActionListener(this);
         this.frm.txtApPaternoUsuario.addActionListener(this);
