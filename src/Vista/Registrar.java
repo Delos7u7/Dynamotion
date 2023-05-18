@@ -457,6 +457,8 @@ public class Registrar extends javax.swing.JFrame {
         AdJF.jPanel111.repaint();    
         AdJF.setLocationRelativeTo(null);
         AdJF.setVisible(true);
+        System.out.println("D2");
+        
         if (ad.getX()==1) {
             
         

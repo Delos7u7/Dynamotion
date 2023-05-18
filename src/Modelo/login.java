@@ -165,12 +165,12 @@ public class login {
                 objDatosConsulta = objInstruccionSQL.executeQuery();
                 while (objDatosConsulta.next()) {
                     Usuario objUsuario = new Usuario();
-                    login objLog = new login();
+                    //login objLog = new login();
                     rolusuario rol = new rolusuario();
                     objUsuario.setIdUsuario(this.objDatosConsulta.getInt(1));
-                    objLog.setFechaCreacionLogin(objDatosConsulta.getDate(2));
+                    this.setFechaCreacionLogin(objDatosConsulta.getDate(2));
                     rol.setIdrolusuario(objDatosConsulta.getInt(3));
-                    objLog.setContraseña(objDatosConsulta.getString(4));
+                    this.setContraseña(objDatosConsulta.getString(4));
                     listaLogin.add(objUsuario);
                 }
                 objCon.cerrarConexion();
