@@ -8,6 +8,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -153,18 +154,55 @@ public class login {
         
         return false;
     } 
+
     
-        public boolean registrarLog() {
+           public ArrayList<Usuario> consultarLogin() {
+        ArrayList<Usuario> listaLogin = new ArrayList();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaCreacionLog = dateFormat.format(this.fechaCreacionLogin);
+        try {
+            if (objCon.abrirConexion()) {
+                objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_ConsultarLogin();");
+                objDatosConsulta = objInstruccionSQL.executeQuery();
+                while (objDatosConsulta.next()) {
+                    Usuario objUsuario = new Usuario();
+                    rolusuario rol = new rolusuario();
+                    objUsuario.setIdUsuario(this.objDatosConsulta.getInt(1));
+                    this.setFechaCreacionLogin(objDatosConsulta.getDate(2));
+                    rol.setIdrolusuario(objDatosConsulta.getInt(3));
+                    this.setContraseña(objDatosConsulta.getString(4));
+                    listaLogin.add(objUsuario);
+                }
+                objCon.cerrarConexion();
+            }
+
+        } catch (SQLException ex) {
+            objCon.mensajes="Error de sintaxis";
+        }
+        return listaLogin;
+    }
+    
+    
+        public boolean registrarLoginInv() {
         System.out.println("1");
         try {
             System.out.println("2");
             if (objCon.abrirConexion()) {
-                objInstruccionSQL = objCon.getObjCon().prepareCall("INSERT INTO TablaPrincipal (idUsuario, llave_foranea) VALUES (valor1, valor2, valor_llave_foranea);");
+                Usuario objUsuario = new Usuario();
+                System.out.println("2.1");
+               // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+               // System.out.println("2.2");
+               // String fechaLog = dateFormat.format(this.fechaCreacionLogin);
+                System.out.println("3");
+                objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarUsuario(?,?,?,?);");
                 System.out.println("4");
-                objInstruccionSQL.setString(1, this.contraseña);
+                objInstruccionSQL.setInt(1, objUsuario.getIdUsuario());
                 System.out.println("5");
-                objInstruccionSQL.setString(2, this.contraseña);
+                objInstruccionSQL.setString(2, this.fechaCreacionLogin.toString());
+                System.out.println("9");
+                objInstruccionSQL.setInt(3, 2);
                 System.out.println("11");
+                objInstruccionSQL.setString(4, this.contraseña);
                 System.out.println(objInstruccionSQL.toString()); // imprime la sentencia SQL completa
                 int filasAfectadas = objInstruccionSQL.executeUpdate();
                 System.out.println("12");

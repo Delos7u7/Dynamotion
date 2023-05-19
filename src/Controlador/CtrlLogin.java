@@ -15,17 +15,25 @@ import javax.swing.JOptionPane;
  * @author Intel
  */
 public class CtrlLogin {
+
     private int op;
     private login objLog;
     public Login vistaLogin;
-    private String prueba ="Esto es una prueba";
-     public CtrlLogin() {
+    private String prueba = "Esto es una prueba";
+
+    public CtrlLogin() {
     }
 
     public CtrlLogin(int op, String nombreUsuario, String claveLogin, Login vistaLogin) {
         this.op = op;
         this.objLog = new login(nombreUsuario, claveLogin);
-        this.vistaLogin=vistaLogin;
+        System.out.println(nombreUsuario + " " + claveLogin);
+        this.vistaLogin = vistaLogin;
+    }
+
+    public CtrlLogin(int op) {
+        this.op = op;
+        this.objLog = new login();
     }
 
     public int getOp() {
@@ -43,31 +51,38 @@ public class CtrlLogin {
     public void setObjLog(login objLog) {
         this.objLog = objLog;
     }
-    
+
     //Metodo para el menu de opcion
-    
-    public void menuOpciones(){
-        
+    public void menuOpciones() {
+
         switch (this.op) {
             case 1: //Validar Login
-                
+
                 if (objLog.validarLogin()) {
                     JOptionPane.showMessageDialog(null, "Usuario Válido");
                     Home p1 = new Home();
                     p1.setVisible(true);
                     this.vistaLogin.setVisible(false);
-                    
-                }else{
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Usuario no válido");
                 }
-                
+
                 break;
+
+            case 2://Lllenar el login
+                System.out.println("Hasta aki todo bn");
+                if (objLog.registrarLoginInv()) {
+                    JOptionPane.showMessageDialog(null, "Login Registrado con éxito");
+                    System.out.println("Hasta aki todo bn 2");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login no registrado");
+                }
             default:
                 throw new AssertionError();
         }
-        
+
     }
-    
-    
-    
+
 }

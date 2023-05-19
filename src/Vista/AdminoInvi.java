@@ -16,9 +16,23 @@ public class AdminoInvi extends javax.swing.JPanel {
      * Creates new form AdminoInvi
      */
     private int x=0;
+    
+    
+    
+    AdminoInvJframe j = new AdminoInvJframe();
     public AdminoInvi() {
         initComponents();
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,9 +50,9 @@ public class AdminoInvi extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanelAdmin = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelInv = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -81,10 +95,10 @@ public class AdminoInvi extends javax.swing.JPanel {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 80, 300));
 
-        jPanel4.setBackground(new java.awt.Color(102, 102, 255));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanelAdmin.setBackground(new java.awt.Color(102, 102, 255));
+        jPanelAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
+                jPanelAdminMouseClicked(evt);
             }
         });
 
@@ -92,43 +106,53 @@ public class AdminoInvi extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("ADMINISTRADOR");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAdminLayout = new javax.swing.GroupLayout(jPanelAdmin);
+        jPanelAdmin.setLayout(jPanelAdminLayout);
+        jPanelAdminLayout.setHorizontalGroup(
+            jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAdminLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanelAdminLayout.setVerticalGroup(
+            jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAdminLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 140, 50));
+        jPanel1.add(jPanelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 140, 50));
 
-        jPanel5.setBackground(new java.awt.Color(102, 102, 255));
+        jPanelInv.setBackground(new java.awt.Color(102, 102, 255));
+        jPanelInv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelInvMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("INVITADO");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelInvLayout = new javax.swing.GroupLayout(jPanelInv);
+        jPanelInv.setLayout(jPanelInvLayout);
+        jPanelInvLayout.setHorizontalGroup(
+            jPanelInvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelInvLayout.setVerticalGroup(
+            jPanelInvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
+        jPanel1.add(jPanelInv, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -142,14 +166,29 @@ public class AdminoInvi extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+    private void jPanelAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelAdminMouseClicked
         String contrase = JOptionPane.showInputDialog(null, "Introduce la clave de administrador");
         if (contrase.equals("098")) {
             JOptionPane.showMessageDialog(null, "Contraseña correcta");
+            x=0;
         } else {
             JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
         }
-    }//GEN-LAST:event_jPanel4MouseClicked
+    }//GEN-LAST:event_jPanelAdminMouseClicked
+
+    private void jPanelInvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelInvMouseClicked
+        System.out.println("xdd");
+        x=1;
+       j.dispose();
+    }//GEN-LAST:event_jPanelInvMouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        System.out.println("XXDD");  
+        x=1;
+        Registrar r = new Registrar();
+        r.registrarr();
+       j.setVisible(false);
+    }//GEN-LAST:event_jLabel6MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -162,7 +201,7 @@ public class AdminoInvi extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanelAdmin;
+    private javax.swing.JPanel jPanelInv;
     // End of variables declaration//GEN-END:variables
 }
