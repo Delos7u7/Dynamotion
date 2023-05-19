@@ -36,7 +36,7 @@ public class Registrar extends javax.swing.JFrame {
         
         Usuario mod = new Usuario();
         login log = new login();
-        CtrlUsuario ctrl = new CtrlUsuario(mod, log, this);
+        CtrlUsuario ctrl = new CtrlUsuario(mod, this, log);
         ctrl.iniciar();
         this.dispose();
     }
@@ -464,7 +464,7 @@ public class Registrar extends javax.swing.JFrame {
 
             Usuario mod = new Usuario();
             login log = new login();
-            CtrlUsuario ctrl = new CtrlUsuario(mod, log, this);
+            CtrlUsuario ctrl = new CtrlUsuario(mod,  this,log);
             CtrlLogin ctrlLog = new CtrlLogin(2);
             ctrlLog.menuOpciones();
             ctrl.iniciar();
