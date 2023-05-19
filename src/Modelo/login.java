@@ -165,7 +165,6 @@ public class login {
                 objDatosConsulta = objInstruccionSQL.executeQuery();
                 while (objDatosConsulta.next()) {
                     Usuario objUsuario = new Usuario();
-                    //login objLog = new login();
                     rolusuario rol = new rolusuario();
                     objUsuario.setIdUsuario(this.objDatosConsulta.getInt(1));
                     this.setFechaCreacionLogin(objDatosConsulta.getDate(2));
@@ -188,14 +187,17 @@ public class login {
         try {
             System.out.println("2");
             if (objCon.abrirConexion()) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String fechaLog = dateFormat.format(this.fechaCreacionLogin);
+                Usuario objUsuario = new Usuario();
+                System.out.println("2.1");
+               // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+               // System.out.println("2.2");
+               // String fechaLog = dateFormat.format(this.fechaCreacionLogin);
                 System.out.println("3");
                 objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarUsuario(?,?,?,?);");
                 System.out.println("4");
                 objInstruccionSQL.setInt(1, objUsuario.getIdUsuario());
                 System.out.println("5");
-                objInstruccionSQL.setString(2, fechaLog);
+                objInstruccionSQL.setString(2, this.fechaCreacionLogin.toString());
                 System.out.println("9");
                 objInstruccionSQL.setInt(3, 2);
                 System.out.println("11");
