@@ -16,28 +16,28 @@ import java.util.Date;
  * @author Intel
  */
 public class login {
-     private int idlogin;
+
+    private int idlogin;
     private Date fechaCreacionLogin;
     private String contraseña;
     //laves foraneas
     private rolusuario objRolUsuario;
     private Usuario objUsuario;
-    
+
     public CallableStatement objInstruccionSQL;
     public ResultSet objDatosConsulta;
     public ConexionBD objCon = new ConexionBD();
 
     public login() {
     }
-    
-    
-    public login(String username, String contraseña){
-        this.objUsuario=new Usuario();
-        
-        this.contraseña=contraseña;
-                
+
+    public login(String username, String contraseña) {
+        this.objUsuario = new Usuario();
+
+        this.contraseña = contraseña;
+
         this.objUsuario.setUsername(username);
-        
+
     }
 
     public login(int idlogin, Date fechaCreacionLogin, rolusuario objRolUsuario, Usuario objUsuario, CallableStatement objInstruccionSQL, ResultSet objDatosConsulta) {
@@ -58,8 +58,6 @@ public class login {
         this.objInstruccionSQL = objInstruccionSQL;
         this.objDatosConsulta = objDatosConsulta;
     }
-    
-    
 
     public int getIdlogin() {
         return idlogin;
@@ -124,39 +122,34 @@ public class login {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
-    
-    
-       
-    public boolean validarLogin()
-    {
-        
+
+    public boolean validarLogin() {
+
         try {
-            
+
             if (objCon.abrirConexion()) {
-                
-                objInstruccionSQL=objCon.getObjCon().prepareCall("call sp_validarInformacion(?,?)");
+
+                objInstruccionSQL = objCon.getObjCon().prepareCall("call sp_validarInformacion(?,?)");
                 objInstruccionSQL.setString(1, this.objUsuario.getUsername());
                 objInstruccionSQL.setString(2, contraseña);
-                objDatosConsulta=objInstruccionSQL.executeQuery();
-                
-                if (objDatosConsulta.next()!=false) {
+                objDatosConsulta = objInstruccionSQL.executeQuery();
+
+                if (objDatosConsulta.next() != false) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-                
-            }
-            
-        } catch (SQLException ex) {
-            objCon.mensajes="ERROR DE SINTAXIS de SQL " + ex.getMessage();
-        }
-        
-        return false;
-    } 
 
-    
-           public ArrayList<Usuario> consultarLogin() {
+            }
+
+        } catch (SQLException ex) {
+            objCon.mensajes = "ERROR DE SINTAXIS de SQL " + ex.getMessage();
+        }
+
+        return false;
+    }
+
+    public ArrayList<Usuario> consultarLogin() {
         ArrayList<Usuario> listaLogin = new ArrayList();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fechaCreacionLog = dateFormat.format(this.fechaCreacionLogin);
@@ -177,28 +170,25 @@ public class login {
             }
 
         } catch (SQLException ex) {
-            objCon.mensajes="Error de sintaxis";
+            objCon.mensajes = "Error de sintaxis";
         }
         return listaLogin;
     }
-    
-    
-        public boolean registrarLoginInv() {
+
+    public boolean registrarLoginInv() {
         System.out.println("1");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("3");
         try {
             System.out.println("2");
             if (objCon.abrirConexion()) {
                 Usuario objUsuario = new Usuario();
                 System.out.println("2.1");
-               // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-               // System.out.println("2.2");
-               // String fechaLog = dateFormat.format(this.fechaCreacionLogin);
-                System.out.println("3");
                 objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarUsuario(?,?,?,?);");
                 System.out.println("4");
                 objInstruccionSQL.setInt(1, objUsuario.getIdUsuario());
                 System.out.println("5");
-                objInstruccionSQL.setString(2, this.fechaCreacionLogin.toString());
+                objInstruccionSQL.setDate(2, (java.sql.Date) (fechaCreacionLogin));
                 System.out.println("9");
                 objInstruccionSQL.setInt(3, 2);
                 System.out.println("11");
@@ -222,7 +212,5 @@ public class login {
         }
         return false;
     }
-    
-    
-    
+
 }
