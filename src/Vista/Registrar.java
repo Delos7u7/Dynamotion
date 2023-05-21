@@ -31,14 +31,13 @@ public class Registrar extends javax.swing.JFrame {
     }
 
     public void registrarr() {
-        CtrlLogin ctrlLog = new CtrlLogin(2);
-        ctrlLog.menuOpciones();
-        
-        Usuario mod = new Usuario();
-        login log = new login();
-        CtrlUsuario ctrl = new CtrlUsuario(mod, this, log);
-        ctrl.iniciar();
-        this.dispose();
+            Usuario mod = new Usuario();
+            login log = new login();
+            CtrlUsuario ctrl = new CtrlUsuario(mod,  this,log);
+            CtrlLogin ctrlLog = new CtrlLogin(2);
+            ctrlLog.menuOpciones();
+            ctrl.iniciar();
+            this.dispose();
     }
 
     /**

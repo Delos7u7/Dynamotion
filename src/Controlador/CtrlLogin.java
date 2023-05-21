@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Modelo.Usuario;
 import Modelo.login;
 import Vista.Home;
 import Vista.Login;
@@ -20,10 +21,14 @@ public class CtrlLogin {
     private login objLog;
     public Login vistaLogin;
     private String prueba = "Esto es una prueba";
-
+    private Usuario objUsuario;
     public CtrlLogin() {
     }
-
+    
+    public CtrlLogin(Usuario us){
+        this.objUsuario=us;
+    }
+    
     public CtrlLogin(int op, String nombreUsuario, String claveLogin, Login vistaLogin) {
         this.op = op;
         this.objLog = new login(nombreUsuario, claveLogin);
@@ -72,6 +77,7 @@ public class CtrlLogin {
 
             case 2://Lllenar el login
                 System.out.println("Hasta aki todo bn");
+                login log = new login(this.objUsuario);
                 if (objLog.registrarLoginInv()) {
                     JOptionPane.showMessageDialog(null, "Login Registrado con éxito");
                     System.out.println("Hasta aki todo bn 2");

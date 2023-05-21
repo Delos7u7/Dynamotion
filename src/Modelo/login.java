@@ -30,6 +30,10 @@ public class login {
 
     public login() {
     }
+    
+    public login (Usuario us){
+        this.objUsuario=us;
+    }
 
     public login(String username, String contraseña) {
         this.objUsuario = new Usuario();
@@ -182,18 +186,19 @@ public class login {
         try {
             System.out.println("2");
             if (objCon.abrirConexion()) {
-                Usuario objUsuario = new Usuario();
                 System.out.println("2.1");
-                objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarUsuario(?,?,?,?);");
+                objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarLogin(?,?,?,?,?,?,?,?);");
                 System.out.println("4");
-                objInstruccionSQL.setInt(1, objUsuario.getIdUsuario());
+                objInstruccionSQL.setString(1, objUsuario.getNombre());
                 System.out.println("5");
-                objInstruccionSQL.setDate(2, (java.sql.Date) (fechaCreacionLogin));
-                System.out.println("9");
-                objInstruccionSQL.setInt(3, 2);
-                System.out.println("11");
-                objInstruccionSQL.setString(4, this.contraseña);
-                System.out.println(objInstruccionSQL.toString()); // imprime la sentencia SQL completa
+                objInstruccionSQL.setString(2, objUsuario.getApellidoPaterno());
+                objInstruccionSQL.setString(3, objUsuario.getApellidoMaterno());
+                objInstruccionSQL.setString(4, objUsuario.getTelefono());
+                        
+                objInstruccionSQL.setDate(5, (java.sql.Date) (objUsuario.getFechaNacimientoUsuario()));
+                objInstruccionSQL.setString(6, objUsuario.getUsername());
+                objInstruccionSQL.setString(7, this.contraseña);
+                objInstruccionSQL.setInt(8, 2);
                 int filasAfectadas = objInstruccionSQL.executeUpdate();
                 System.out.println("12");
                 if (filasAfectadas > 0) {
