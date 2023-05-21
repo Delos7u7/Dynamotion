@@ -38,6 +38,7 @@ public class Registrar extends javax.swing.JFrame {
             ctrlLog.menuOpciones();
             ctrl.iniciar();
             this.dispose();
+            System.out.println("XD");
     }
 
     /**
