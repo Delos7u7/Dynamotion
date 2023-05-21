@@ -6,6 +6,7 @@ package Controlador;
 
 import Modelo.Usuario;
 import Modelo.login;
+import Vista.Home;
 import Vista.Login;
 import Vista.Registrar;
 import java.awt.event.ActionEvent;
@@ -25,11 +26,13 @@ public class CtrlUsuario implements ActionListener {
     private login log;
     private Registrar frm;
     private login modC;
+    private int op;
 
     public CtrlUsuario() {
     }
 
-    public CtrlUsuario(Usuario mod, Registrar frm, login log) {
+    public CtrlUsuario(Usuario mod, Registrar frm, login log, int op) {
+        this.op=op;
         this.mod = mod;
         this.frm = frm;
         this.log = log;
@@ -46,6 +49,37 @@ public class CtrlUsuario implements ActionListener {
 
     public void iniciar() {
         //frm.setLocation(null);
+    }
+    public void menuOpciones() {
+
+        switch (this.op) {
+            case 1: //Validar Login
+
+                if (log.validarLogin()) {
+                    JOptionPane.showMessageDialog(null, "Usuario Válido");
+                    Home p1 = new Home();
+                    p1.setVisible(true);
+                    this.frm.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario no válido");
+                }
+
+                break;
+
+            case 2://Lllenar el login
+                System.out.println("Hasta aki todo bn");
+                if (log.registrarLoginInv()) {
+                    JOptionPane.showMessageDialog(null, "Login Registrado con éxito");
+                    System.out.println("Hasta aki todo bn 2");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login no registrado");
+                }
+            default:
+                throw new AssertionError();
+        }
+
     }
 
     @Override
@@ -73,6 +107,9 @@ public class CtrlUsuario implements ActionListener {
                 limpiar();
             }
         }
+        
+       
+        
 /*
         if (e.getSource() == frm.btnModificar) {
             mod.setIdusuario(Integer.parseInt(frm.txtBuscar.getText()));

@@ -33,9 +33,9 @@ public class Registrar extends javax.swing.JFrame {
     public void registrarr() {
             Usuario mod = new Usuario();
             login log = new login();
-            CtrlUsuario ctrl = new CtrlUsuario(mod,  this,log);
-            CtrlLogin ctrlLog = new CtrlLogin(2);
-            ctrlLog.menuOpciones();
+            CtrlUsuario ctrl = new CtrlUsuario(mod,  this,log,2);
+            //CtrlLogin ctrlLog = new CtrlLogin(2);
+            ctrl.menuOpciones();
             ctrl.iniciar();
             this.dispose();
     }
@@ -463,10 +463,10 @@ public class Registrar extends javax.swing.JFrame {
 
             Usuario mod = new Usuario();
             login log = new login();
-            CtrlUsuario ctrl = new CtrlUsuario(mod,  this,log);
+            //CtrlUsuario ctrl = new CtrlUsuario(mod,  this,log);
             CtrlLogin ctrlLog = new CtrlLogin(2);
             ctrlLog.menuOpciones();
-            ctrl.iniciar();
+            //ctrl.iniciar();
             this.dispose();
         }
     }//GEN-LAST:event_btnRegiMouseClicked

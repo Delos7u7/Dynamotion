@@ -77,7 +77,6 @@ public class CtrlLogin {
 
             case 2://Lllenar el login
                 System.out.println("Hasta aki todo bn");
-                login log = new login(this.objUsuario);
                 if (objLog.registrarLoginInv()) {
                     JOptionPane.showMessageDialog(null, "Login Registrado con éxito");
                     System.out.println("Hasta aki todo bn 2");

@@ -32,7 +32,8 @@ public class login {
     }
     
     public login (Usuario us){
-        this.objUsuario=us;
+        this.objUsuario= new Usuario();
+        //this.objUsuario=us;
     }
 
     public login(String username, String contraseña) {
