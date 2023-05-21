@@ -28,7 +28,7 @@ public class CtrlLogin {
     public CtrlLogin(Usuario us){
         this.objUsuario=us;
     }
-    
+     
     public CtrlLogin(int op, String nombreUsuario, String claveLogin, Login vistaLogin) {
         this.op = op;
         this.objLog = new login(nombreUsuario, claveLogin);
