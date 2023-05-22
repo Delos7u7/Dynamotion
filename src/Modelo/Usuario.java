@@ -11,6 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  *
@@ -140,8 +143,30 @@ public class Usuario {
         return false;
     }
 
-    public void consultarUsuario() {
+public ArrayList<Usuario> consultarUsuario() {
+        ArrayList<Usuario> listaUsuario = new ArrayList();
+        try {
+            if (objCon.abrirConexion()) {
+                objInstruccionSQL = objCon.getObjCon().prepareCall("call sislogin.sp_ConsultaUsuario();");
+                objDatosConsulta = objInstruccionSQL.executeQuery();
+                while (objDatosConsulta.next()) {
+                    Usuario objUsuario = new Usuario();
+                    objUsuario.setIdUsuario(this.objDatosConsulta.getInt(1));
+                    objUsuario.setNombre(objDatosConsulta.getString(2));
+                    objUsuario.setApellidoPaterno(objDatosConsulta.getString(3));
+                    objUsuario.setApellidoMaterno(objDatosConsulta.getString(4));
+                    objUsuario.setTelefono(objDatosConsulta.getString(5));
+                    objUsuario.setFechaNacimientoUsuario(objDatosConsulta.getDate(6));
+                    objUsuario.setTelefono(objDatosConsulta.getString(7));
+                    listaUsuario.add(objUsuario);
+                }
+                objCon.cerrarConexion();
+            }
 
+        } catch (SQLException ex) {
+            objCon.mensajes="Error de sintaxis";
+        }
+        return listaUsuario;
     }
 
     public void modificarUsuario() {

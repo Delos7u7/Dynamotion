@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Controlador.CtrlUsuario;
+import Modelo.Usuario;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -322,6 +324,10 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+       Usuario u = new Usuario();
+       System.out.println("X3");
+       CtrlUsuario c = new CtrlUsuario(u,1);
+       c.menuOpciones();
        PanelPerfil p = new PanelPerfil();
        p.setSize(1270,600);
        p.setLocation(0,0);

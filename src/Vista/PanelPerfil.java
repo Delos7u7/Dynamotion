@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Intel
@@ -16,6 +18,56 @@ public class PanelPerfil extends javax.swing.JPanel {
     public PanelPerfil() {
         initComponents();
         this.setLocation(0,0);
+        
+        
+    }
+
+    public JLabel getLblApellidoMaterno() {
+        return lblApellidoMaterno;
+    }
+
+    public void setLblApellidoMaterno(JLabel lblApellidoMaterno) {
+        this.lblApellidoMaterno = lblApellidoMaterno;
+    }
+
+    public JLabel getLblApellidoPaterno() {
+        return lblApellidoPaterno;
+    }
+
+    public void setLblApellidoPaterno(JLabel lblApellidoPaterno) {
+        this.lblApellidoPaterno = lblApellidoPaterno;
+    }
+
+    public JLabel getLblFechaNacimiento() {
+        return lblFechaNacimiento;
+    }
+
+    public void setLblFechaNacimiento(JLabel lblFechaNacimiento) {
+        this.lblFechaNacimiento = lblFechaNacimiento;
+    }
+
+    public JLabel getLblNombre() {
+        return lblNombre;
+    }
+
+    public void setLblNombre(JLabel lblNombre) {
+        this.lblNombre = lblNombre;
+    }
+
+    public JLabel getLblNombreUsuario() {
+        return lblNombreUsuario;
+    }
+
+    public void setLblNombreUsuario(JLabel lblNombreUsuario) {
+        this.lblNombreUsuario = lblNombreUsuario;
+    }
+
+    public JLabel getLblTelefono() {
+        return lblTelefono;
+    }
+
+    public void setLblTelefono(JLabel lblTelefono) {
+        this.lblTelefono = lblTelefono;
     }
 
     /**
@@ -47,12 +99,13 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lblNombreUsuario = new javax.swing.JLabel();
+        lblFechaNacimiento = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        lblApellidoMaterno = new javax.swing.JLabel();
+        lblApellidoPaterno = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,45 +178,44 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel8.setText("Fecha de Nacimiento:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("jLabel9");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 450, -1));
+        lblNombreUsuario.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lblNombreUsuario.setForeground(new java.awt.Color(51, 51, 51));
+        lblNombreUsuario.setText("jLabel9");
+        add(lblNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 450, -1));
 
-        jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setText("jLabel10");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 450, -1));
+        lblFechaNacimiento.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lblFechaNacimiento.setForeground(new java.awt.Color(51, 51, 51));
+        lblFechaNacimiento.setText("jLabel10");
+        add(lblFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 450, -1));
 
-        jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("jLabel10");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 450, -1));
+        lblTelefono.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lblTelefono.setForeground(new java.awt.Color(51, 51, 51));
+        lblTelefono.setText("jLabel10");
+        add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 450, -1));
 
-        jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel12.setText("jLabel10");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 450, -1));
+        lblApellidoMaterno.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lblApellidoMaterno.setForeground(new java.awt.Color(51, 51, 51));
+        lblApellidoMaterno.setText("jLabel10");
+        add(lblApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 450, -1));
 
-        jLabel13.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel13.setText("jLabel10");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 450, -1));
+        lblApellidoPaterno.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lblApellidoPaterno.setForeground(new java.awt.Color(51, 51, 51));
+        lblApellidoPaterno.setText("jLabel10");
+        add(lblApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 450, -1));
 
-        jLabel14.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel14.setText("jLabel10");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 450, -1));
+        lblNombre.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(51, 51, 51));
+        lblNombre.setText("jLabel10");
+        add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 450, -1));
+
+        jButton1.setText("jButton1");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -177,12 +229,17 @@ public class PanelPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    public javax.swing.JLabel lblApellidoMaterno;
+    public javax.swing.JLabel lblApellidoPaterno;
+    public javax.swing.JLabel lblFechaNacimiento;
+    public javax.swing.JLabel lblNombre;
+    public javax.swing.JLabel lblNombreUsuario;
+    public javax.swing.JLabel lblTelefono;
     // End of variables declaration//GEN-END:variables
 }

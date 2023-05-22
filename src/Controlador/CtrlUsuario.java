@@ -8,6 +8,7 @@ import Modelo.Usuario;
 import Modelo.login;
 import Vista.Home;
 import Vista.Login;
+import Vista.PanelPerfil;
 import Vista.Registrar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,8 +16,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Intel
@@ -27,8 +28,14 @@ public class CtrlUsuario implements ActionListener {
     private Registrar frm;
     private login modC;
     private int op;
+    private PanelPerfil datos;
+    private JLabel j;
 
     public CtrlUsuario() {
+    }
+    public CtrlUsuario(Usuario u,int op){
+        this.mod=u;
+        this.op=op;
     }
 
     public CtrlUsuario(Usuario mod, Registrar frm, login log, int op) {
@@ -51,20 +58,36 @@ public class CtrlUsuario implements ActionListener {
         //frm.setLocation(null);
     }
     public void menuOpciones() {
-
+System.out.println("XDPanel2");
         switch (this.op) {
             case 1: //Validar Login
 
-                if (log.validarLogin()) {
-                    JOptionPane.showMessageDialog(null, "Usuario Válido");
-                    Home p1 = new Home();
-                    p1.setVisible(true);
-                    this.frm.setVisible(false);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Usuario no válido");
+             //String encabezado[]={"idUsuario", "Nombre del Usuario", "Apellido Paterno", "Apellido Materno", "Email",
+              //  "Status Usuario", "Telefono Usuario"};
+              //  this.datos.setColumnIdentifiers(encabezado);
+                PanelPerfil panelPerfil = new PanelPerfil();
+                Object[] datosU=new Object[7];
+                System.out.println("XDPanel");
+                for (Usuario usuario : this.mod.consultarUsuario()) {
+                    
+                    datosU[0]=usuario.getIdUsuario();
+                    datosU[1]=usuario.getNombre();
+                    datosU[2]=usuario.getApellidoPaterno();
+                    datosU[3]=usuario.getApellidoMaterno();
+                    datosU[4]=usuario.getFechaNacimientoUsuario();
+                    datosU[5]=usuario.getTelefono();
+                    datosU[6]=usuario.getTelefono();
+                    System.out.println(""+panelPerfil.getLblNombre());
+                    panelPerfil.getLblNombre().setText(datosU[1].toString());
+                    panelPerfil.getLblApellidoPaterno().setText(datosU[2].toString());
+                    panelPerfil.getLblApellidoMaterno().setText(datosU[3].toString());
+                    panelPerfil.getLblFechaNacimiento().setText(datosU[4].toString());
+                    panelPerfil.getLblTelefono().setText(datosU[5].toString());
+                    panelPerfil.getLblNombreUsuario().setText(datosU[6].toString());
+                    
                 }
-
+                
+                
                 break;
 
             case 2://Lllenar el login
@@ -81,7 +104,9 @@ public class CtrlUsuario implements ActionListener {
         }
 
     }
+    
 
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == frm.btnRegi) {
