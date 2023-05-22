@@ -32,24 +32,21 @@ public class login {
     }
 
     public login(Usuario us) {
-        this.objUsuario = new Usuario();
+        this.objUsuario = us;
         //this.objUsuario=us;
     }
 
     public login(String username, String contraseña) {
-        this.objUsuario = new Usuario();
-
+        this.objUsuario = new Usuario();  // No es necesario crear una nueva instancia aquí
         this.contraseña = contraseña;
-
         this.objUsuario.setUsername(username);
-
     }
 
     public login(int idlogin, Date fechaCreacionLogin, rolusuario objRolUsuario, Usuario objUsuario, CallableStatement objInstruccionSQL, ResultSet objDatosConsulta) {
         this.idlogin = idlogin;
         this.fechaCreacionLogin = fechaCreacionLogin;
         this.objRolUsuario = objRolUsuario;
-        this.objUsuario = objUsuario;
+        this.objUsuario = objUsuario;  // Utilizar la instancia de Usuario recibida como argumento
         this.objInstruccionSQL = objInstruccionSQL;
         this.objDatosConsulta = objDatosConsulta;
     }
@@ -59,7 +56,7 @@ public class login {
         this.fechaCreacionLogin = fechaCreacionLogin;
         this.contraseña = contraseña;
         this.objRolUsuario = objRolUsuario;
-        this.objUsuario = objUsuario;
+        this.objUsuario = objUsuario;  // Utilizar la instancia de Usuario recibida como argumento
         this.objInstruccionSQL = objInstruccionSQL;
         this.objDatosConsulta = objDatosConsulta;
     }
@@ -154,7 +151,7 @@ public class login {
         return false;
     }
 
-    public ArrayList<Usuario> consultarLogin() {
+    /* public ArrayList<Usuario> consultarLogin() {
         ArrayList<Usuario> listaLogin = new ArrayList();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fechaCreacionLog = dateFormat.format(this.fechaCreacionLogin);
@@ -178,8 +175,7 @@ public class login {
             objCon.mensajes = "Error de sintaxis";
         }
         return listaLogin;
-    }
-
+    }*/
     public boolean registrarLoginInv() {
         System.out.println("1");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -187,22 +183,24 @@ public class login {
         try {
             System.out.println("2");
             if (objCon.abrirConexion()) {
-                this.objUsuario = new Usuario();
                 System.out.println("2.1");
                 objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarLogin(?,?,?,?,?,?,?,?);");
                 System.out.println("4");
                 objInstruccionSQL.setString(1, objUsuario.getNombre());
-                System.out.println("5");
                 objInstruccionSQL.setString(2, objUsuario.getApellidoPaterno());
                 objInstruccionSQL.setString(3, objUsuario.getApellidoMaterno());
                 objInstruccionSQL.setString(4, objUsuario.getTelefono());
-
-                objInstruccionSQL.setDate(5, (java.sql.Date) (objUsuario.getFechaNacimientoUsuario()));
+                try {
+                    java.sql.Date fechaNacimiento = new java.sql.Date(objUsuario.getFechaNacimientoUsuario().getTime());
+                    objInstruccionSQL.setDate(5, fechaNacimiento);
+                } catch (SQLException ex) {
+                  
+                }
                 objInstruccionSQL.setString(6, objUsuario.getUsername());
                 objInstruccionSQL.setString(7, this.contraseña);
                 objInstruccionSQL.setInt(8, 2);
                 System.out.println("Si llega ");
-                System.out.println("Usuario: "+ objUsuario.getNombre());
+                System.out.println("Usuario: " + objUsuario.getNombre());
                 int filasAfectadas = objInstruccionSQL.executeUpdate();
                 System.out.println("12");
                 if (filasAfectadas > 0) {

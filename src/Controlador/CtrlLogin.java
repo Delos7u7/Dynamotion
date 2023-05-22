@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  *
  * @author Intel
  */
-public class CtrlLogin implements ActionListener {
+public class CtrlLogin{
 
     private int op;
     private login objLog;
@@ -45,8 +45,7 @@ public class CtrlLogin implements ActionListener {
         this.op = op;
         this.mod = new Usuario();  // Crear una nueva instancia de Usuario
         this.frm = frm;
-        this.objLog = log;
-        this.frm.btnRegi.addActionListener(this);
+        objLog = new login(mod);
 
     }
 
@@ -71,13 +70,11 @@ public class CtrlLogin implements ActionListener {
         this.objLog = objLog;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("XDD");
-        if (e.getSource() == this.frm.btnRegi) {
+    public void Entro(){
             System.out.println("XDD");
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             mod.setNombre(frm.txtNombre.getText());
+            System.out.println("NombreUsuario En controlador: "+ frm.txtNombre.getText());
             mod.setApellidoPaterno(frm.txtApPaternoUsuario.getText());
             mod.setApellidoMaterno(frm.txtApMaternoUsuario.getText());
             mod.setTelefono(frm.txtTelefono.getText());
@@ -89,14 +86,13 @@ public class CtrlLogin implements ActionListener {
             objLog.setContraseña(frm.txtContraseña.getText());
             mod.setUsername(frm.txtNombreUsuario.getText());
 
-            if (mod.registrar()) {
+            if (objLog.registrarLoginInv()) {
                 JOptionPane.showMessageDialog(null, "Registro guardado");
                 limpiar();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al guardar");
                 limpiar();
-            }
-        }
+            }  
     }
 
     //Metodo para el menu de opcion
@@ -106,6 +102,7 @@ public class CtrlLogin implements ActionListener {
             case 1: //Validar Login
 
                 if (objLog.validarLogin()) {
+                    System.out.println("Entra 1");
                     JOptionPane.showMessageDialog(null, "Usuario Válido");
                     Home p1 = new Home();
                     p1.setVisible(true);

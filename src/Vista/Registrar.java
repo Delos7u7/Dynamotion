@@ -442,6 +442,7 @@ public class Registrar extends javax.swing.JFrame {
     private void btnRegiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegiActionPerformed
         login log = new login();
         CtrlLogin ctrl = new CtrlLogin(log, this, 2);
+        ctrl.Entro();
         ctrl.menuOpciones();
         this.dispose();
 
