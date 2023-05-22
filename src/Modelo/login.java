@@ -30,9 +30,9 @@ public class login {
 
     public login() {
     }
-    
-    public login (Usuario us){
-        this.objUsuario= new Usuario();
+
+    public login(Usuario us) {
+        this.objUsuario = new Usuario();
         //this.objUsuario=us;
     }
 
@@ -187,6 +187,7 @@ public class login {
         try {
             System.out.println("2");
             if (objCon.abrirConexion()) {
+                this.objUsuario = new Usuario();
                 System.out.println("2.1");
                 objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_insertarLogin(?,?,?,?,?,?,?,?);");
                 System.out.println("4");
@@ -195,11 +196,13 @@ public class login {
                 objInstruccionSQL.setString(2, objUsuario.getApellidoPaterno());
                 objInstruccionSQL.setString(3, objUsuario.getApellidoMaterno());
                 objInstruccionSQL.setString(4, objUsuario.getTelefono());
-                        
+
                 objInstruccionSQL.setDate(5, (java.sql.Date) (objUsuario.getFechaNacimientoUsuario()));
                 objInstruccionSQL.setString(6, objUsuario.getUsername());
                 objInstruccionSQL.setString(7, this.contraseña);
                 objInstruccionSQL.setInt(8, 2);
+                System.out.println("Si llega ");
+                System.out.println("Usuario: "+ objUsuario.getNombre());
                 int filasAfectadas = objInstruccionSQL.executeUpdate();
                 System.out.println("12");
                 if (filasAfectadas > 0) {

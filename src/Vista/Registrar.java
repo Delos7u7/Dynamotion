@@ -31,14 +31,14 @@ public class Registrar extends javax.swing.JFrame {
     }
 
     public void registrarr() {
-            Usuario mod = new Usuario();
-            login log = new login();
-            CtrlUsuario ctrl = new CtrlUsuario(mod,  this,log,2);
-            //CtrlLogin ctrlLog = new CtrlLogin(2);
-            ctrl.menuOpciones();
-            ctrl.iniciar();
-            this.dispose();
-            System.out.println("XD");
+        Usuario mod = new Usuario();
+        login log = new login();
+        CtrlUsuario ctrl = new CtrlUsuario(mod, this, log, 2);
+        //CtrlLogin ctrlLog = new CtrlLogin(2);
+        ctrl.menuOpciones();
+        ctrl.iniciar();
+        this.dispose();
+        System.out.println("XD");
     }
 
     /**
@@ -440,6 +440,11 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MouseExited
 
     private void btnRegiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegiActionPerformed
+        login log = new login();
+        CtrlLogin ctrl = new CtrlLogin(log, this, 2);
+        ctrl.menuOpciones();
+        this.dispose();
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegiActionPerformed
 
@@ -448,7 +453,7 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnRegiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegiMouseClicked
-        AdminoInvJframe AdJF = new AdminoInvJframe();
+        /*AdminoInvJframe AdJF = new AdminoInvJframe();
         AdminoInvi ad = new AdminoInvi();
         ad.setSize(470, 300);
         ad.setLocation(0, 0);
@@ -458,18 +463,11 @@ public class Registrar extends javax.swing.JFrame {
         AdJF.jPanel111.repaint();
         AdJF.setLocationRelativeTo(null);
         AdJF.setVisible(true);
-        System.out.println("D2");
-
-        if (ad.getX() == 1) {
-
-            Usuario mod = new Usuario();
-            login log = new login();
-            //CtrlUsuario ctrl = new CtrlUsuario(mod,  this,log);
-            CtrlLogin ctrlLog = new CtrlLogin(2);
-            ctrlLog.menuOpciones();
-            //ctrl.iniciar();
-            this.dispose();
-        }
+        System.out.println("D2");*/
+ /*login log = new login();
+            CtrlLogin ctrl = new CtrlLogin(log,this,2);
+            ctrl.menuOpciones();
+            this.dispose();*/
     }//GEN-LAST:event_btnRegiMouseClicked
 
     private void btnRegiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegiMouseEntered

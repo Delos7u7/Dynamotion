@@ -18,7 +18,7 @@
 --
 -- Table structure for table `sesiones`
 --
-
+use dynamotion2;
 DROP TABLE IF EXISTS `sesiones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;

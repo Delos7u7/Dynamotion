@@ -8,6 +8,13 @@ import Modelo.Usuario;
 import Modelo.login;
 import Vista.Home;
 import Vista.Login;
+import Vista.Registrar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -15,25 +22,32 @@ import javax.swing.JOptionPane;
  *
  * @author Intel
  */
-public class CtrlLogin {
+public class CtrlLogin implements ActionListener {
 
     private int op;
     private login objLog;
     public Login vistaLogin;
     private String prueba = "Esto es una prueba";
-    private Usuario objUsuario;
+    private Usuario mod;
+    private Registrar frm;
+
     public CtrlLogin() {
     }
-    
-    public CtrlLogin(Usuario us){
-        this.objUsuario=us;
-    }
-     
+
     public CtrlLogin(int op, String nombreUsuario, String claveLogin, Login vistaLogin) {
         this.op = op;
         this.objLog = new login(nombreUsuario, claveLogin);
         System.out.println(nombreUsuario + " " + claveLogin);
         this.vistaLogin = vistaLogin;
+    }
+
+    public CtrlLogin(login log, Registrar frm, int op) {
+        this.op = op;
+        this.mod = new Usuario();  // Crear una nueva instancia de Usuario
+        this.frm = frm;
+        this.objLog = log;
+        this.frm.btnRegi.addActionListener(this);
+
     }
 
     public CtrlLogin(int op) {
@@ -55,6 +69,34 @@ public class CtrlLogin {
 
     public void setObjLog(login objLog) {
         this.objLog = objLog;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("XDD");
+        if (e.getSource() == this.frm.btnRegi) {
+            System.out.println("XDD");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            mod.setNombre(frm.txtNombre.getText());
+            mod.setApellidoPaterno(frm.txtApPaternoUsuario.getText());
+            mod.setApellidoMaterno(frm.txtApMaternoUsuario.getText());
+            mod.setTelefono(frm.txtTelefono.getText());
+            try {
+                mod.setFechaNacimientoUsuario(dateFormat.parse(frm.txtFechaNacimiento.getText()));
+            } catch (ParseException ex) {
+                Logger.getLogger(CtrlUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            objLog.setContraseña(frm.txtContraseña.getText());
+            mod.setUsername(frm.txtNombreUsuario.getText());
+
+            if (mod.registrar()) {
+                JOptionPane.showMessageDialog(null, "Registro guardado");
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al guardar");
+                limpiar();
+            }
+        }
     }
 
     //Metodo para el menu de opcion
@@ -88,6 +130,16 @@ public class CtrlLogin {
                 throw new AssertionError();
         }
 
+    }
+
+    public void limpiar() {
+        frm.txtNombre.setText(null);
+        frm.txtApPaternoUsuario.setText(null);
+        frm.txtApMaternoUsuario.setText(null);
+        frm.txtTelefono.setText(null);
+        frm.txtFechaNacimiento.setText(null);
+        frm.txtContraseña.setText(null);
+        frm.txtNombreUsuario.setText(null);
     }
 
 }
