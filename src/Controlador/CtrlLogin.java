@@ -100,7 +100,7 @@ public class CtrlLogin{
 
         switch (this.op) {
             case 1: //Validar Login
-
+                System.out.println("Entra al case");
                 if (objLog.validarLogin()) {
                     System.out.println("Entra 1");
                     JOptionPane.showMessageDialog(null, "Usuario Válido");

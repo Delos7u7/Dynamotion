@@ -126,12 +126,14 @@ public class login {
     }
 
     public boolean validarLogin() {
-
+        System.out.println("Entra aqui 1");
         try {
-
+            System.out.println("Entra aqui 2");
             if (objCon.abrirConexion()) {
-
-                objInstruccionSQL = objCon.getObjCon().prepareCall("call sp_validarInformacion(?,?)");
+                System.out.println("Entra aqui 3");
+                System.out.println("Username: " + this.objUsuario.getUsername());
+                System.out.println("Contraseña: " + this.contraseña);
+                objInstruccionSQL = objCon.getObjCon().prepareCall("call dynamotion2.sp_DyvalidarInformacion(?,?);");
                 objInstruccionSQL.setString(1, this.objUsuario.getUsername());
                 objInstruccionSQL.setString(2, contraseña);
                 objDatosConsulta = objInstruccionSQL.executeQuery();
@@ -194,7 +196,7 @@ public class login {
                     java.sql.Date fechaNacimiento = new java.sql.Date(objUsuario.getFechaNacimientoUsuario().getTime());
                     objInstruccionSQL.setDate(5, fechaNacimiento);
                 } catch (SQLException ex) {
-                  
+
                 }
                 objInstruccionSQL.setString(6, objUsuario.getUsername());
                 objInstruccionSQL.setString(7, this.contraseña);

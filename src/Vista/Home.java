@@ -5,6 +5,7 @@
 package Vista;
 
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -99,6 +100,11 @@ public class Home extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Perfil");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -256,7 +262,7 @@ public class Home extends javax.swing.JFrame {
                     .addGap(25, 25, 25)))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 1120, 130));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 1120, 130));
 
         panelHome.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -314,6 +320,16 @@ public class Home extends javax.swing.JFrame {
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
         jLabel9.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel9MouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+       PanelPerfil p = new PanelPerfil();
+       p.setSize(1270,600);
+       p.setLocation(0,0);
+       panelHome.removeAll();
+       panelHome.add(p,BorderLayout.CENTER);
+       panelHome.revalidate();
+       panelHome.repaint();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments

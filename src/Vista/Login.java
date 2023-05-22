@@ -217,6 +217,9 @@ public class Login extends javax.swing.JFrame {
         userPass.setText("*********************");
         userPass.setBorder(null);
         userPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userPassMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 userPassMousePressed(evt);
             }
@@ -337,6 +340,12 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, con.mensajes);
         con.cerrarConexion();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void userPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userPassMouseClicked
+        userPass.setText("");
+        
+        
+    }//GEN-LAST:event_userPassMouseClicked
 
     /**
      * @param args the command line arguments
